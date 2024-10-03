@@ -14,12 +14,18 @@ public class Sequence {
     }
 
     public static int runSequence(int limit_value){
-        int n = 1;
+        //int n = 1;
         int current_value = 1;
-        while(n <= limit_value){
+        if(limit_value <= 0){
+            current_value = 0;
+        }
+        for(int i = 1; i <= limit_value; i++){
+            current_value *= i;
+        }
+        /*while(n <= limit_value){
             current_value *= n;
             n += 1;
-        }
+        }*/
         return current_value;
     }
 
