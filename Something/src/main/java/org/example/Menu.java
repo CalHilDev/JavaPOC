@@ -1,43 +1,46 @@
 package org.example;
 
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Menu {
    /* String placeholder;*/
-    Map<String, MenuDetails> menu = new HashMap<String, MenuDetails>();
-    List isTrue = new List();
+    Map<String, MenuDetails> menuMap = new LinkedHashMap<String, MenuDetails>();
+    List<String> isTrue = new ArrayList<>();
 
-    /*public static void setVisibleItems(Boolean isMenuTitle, Boolean isIconLocation, Boolean isHelpText) {
-        if (isMenuTitle) {
-            menu.put(true, menuTitle);
-        }
-        if (isIconLocation) {
-            menu.put(true, iconLocation);
-        }
-        if (isHelpText) {
-            menu.put(true, helpText);
-        }
-    }*/
-
-    public static void getVisibleItems(){
-        /*for(Boolean i : menu.keySet()){
-            if(i = true){
-                isTrue.add(menu.get(i));
-            }
-        }*/
-        menu.get(key);
-        //run check for isVisible
-        //if true get item, else ignore
+    public Map<String, MenuDetails> getMenu() {
+        return menuMap;
     }
 
-    public static List getTitles(){
-        List titles = new List();
-        for(MenuDetails i : menu.values()){
-            titles.add(i);
+    public void setMenu(Map<String, MenuDetails> menu) {
+        this.menuMap = menu;
+    }
+
+    public List<String> getVisibleItems(){
+        List<String> visibleItems = new ArrayList<>();
+        for(MenuDetails i : menuMap.values()){
+            if(i.getVisible()){
+                System.out.println(i.getMenuTitle());
+                visibleItems.add(i.getMenuTitle());
+            }
+        }
+        return visibleItems;
+    }
+
+    public List<String> getTitles(){
+        List<String> titles = new ArrayList<>();
+        for(MenuDetails i : menuMap.values()){
+            titles.add(i.toString());
         }
         return titles;
+    }
+
+    public Set<String> visibleItemsSet(){
+        Set<String> visibleItems = new HashSet<>();
+        for(MenuDetails i : menuMap.values()){
+            if(i.getVisible()){
+                visibleItems.add(i.getMenuTitle());
+            }
+        }
+        return visibleItems;
     }
 }
