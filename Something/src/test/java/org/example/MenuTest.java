@@ -14,6 +14,7 @@ public class MenuTest {
     Menu menu;
     @BeforeEach
     public void setUp() {
+        //send in test data, does the start up needed for all tests
         menu = new Menu();
         Map<String, MenuDetails> menuMap = menu.getMenu();
         MenuDetails menuDetails = new MenuDetails("File_New", "New", "file/image.png", "Creates something new", true);
@@ -27,17 +28,26 @@ public class MenuTest {
     }
     @Test
     public void testGetVisibleItems(){
+        //tests the items with isVisible = true
         List<String> result = menu.getVisibleItems();
         assertEquals("New", result.get(0), "The list should say New");
     }
     @Test
     public void testGetTitles(){
+        //gets the titles of each menu map
         List<String> result = menu.getTitles();
         assertEquals("New", result.get(0), "The list should say New");
     }
     @Test
     public void testVisibleItemsSet(){
+        //returns the set with items that isVisible = true
         Set<String> result = menu.visibleItemsSet();
         assertEquals("New, Open, Save As", result, "The set should be New");
+    }
+    @Test
+    public void testGetMapLength(){
+        //gets the length of the map
+        int result = menu.getMapLength();
+        assertEquals(4, result, "The length should be 4");
     }
 }

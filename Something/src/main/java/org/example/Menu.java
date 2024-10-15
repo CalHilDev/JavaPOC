@@ -3,7 +3,6 @@ package org.example;
 import java.util.*;
 
 public class Menu {
-   /* String placeholder;*/
     Map<String, MenuDetails> menuMap = new LinkedHashMap<String, MenuDetails>();
     List<String> isTrue = new ArrayList<>();
 
@@ -16,10 +15,10 @@ public class Menu {
     }
 
     public List<String> getVisibleItems(){
+        //Checks what items isVisible = true and returns them
         List<String> visibleItems = new ArrayList<>();
         for(MenuDetails i : menuMap.values()){
             if(i.getVisible()){
-                System.out.println(i.getMenuTitle());
                 visibleItems.add(i.getMenuTitle());
             }
         }
@@ -27,6 +26,7 @@ public class Menu {
     }
 
     public List<String> getTitles(){
+        //returns the MenuTitle of each menuMap
         List<String> titles = new ArrayList<>();
         for(MenuDetails i : menuMap.values()){
             titles.add(i.toString());
@@ -35,6 +35,7 @@ public class Menu {
     }
 
     public Set<String> visibleItemsSet(){
+        //stores the visible items in a set
         Set<String> visibleItems = new HashSet<>();
         for(MenuDetails i : menuMap.values()){
             if(i.getVisible()){
@@ -42,5 +43,11 @@ public class Menu {
             }
         }
         return visibleItems;
+    }
+
+    public int getMapLength(){
+        //returns length of the map
+        int mapLength = menuMap.size();
+        return mapLength;
     }
 }
