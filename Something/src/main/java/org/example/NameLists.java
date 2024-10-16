@@ -9,16 +9,26 @@ public class NameLists {
     List<String> namesAND = new ArrayList<>();
     List<String> namesOR = new ArrayList<>();
 
-    public void returnNamesA(){
+    public void setNamesA(String name) {
+        namesA.add(name);
+    }
+
+    public void setNamesB(String name) {
+        namesB.add(name);
+    }
+
+    public List<String> returnNamesA(){
         for(int i = 0; i < namesA.size(); i++){
             System.out.println(namesA.get(i));
         }
+        return namesA;
     }
 
-    public void returnNamesB(){
+    public List<String> returnNamesB(){
         for(int i = 0; i < namesB.size(); i++){
             System.out.println(namesB.get(i));
         }
+        return namesB;
     }
 
     public void sendToList(){
