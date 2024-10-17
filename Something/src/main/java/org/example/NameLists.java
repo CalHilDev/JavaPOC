@@ -18,6 +18,7 @@ public class NameLists {
     }
 
     public List<String> returnNamesA(){
+        //can be called to use the list
         for(int i = 0; i < namesA.size(); i++){
             System.out.println(namesA.get(i));
         }
@@ -25,13 +26,14 @@ public class NameLists {
     }
 
     public List<String> returnNamesB(){
+        //can be called to use the list
         for(int i = 0; i < namesB.size(); i++){
             System.out.println(namesB.get(i));
         }
         return namesB;
     }
 
-    public void sendToList(){
+    public void sendToANDList(){
         for(int i = 0; i < namesA.size(); i++){
             for(int j = 0; j < namesB.size(); j++){
                 if(namesA.get(i).equals(namesB.get(j))){
@@ -42,5 +44,40 @@ public class NameLists {
                 }
             }
         }
+    }
+
+    public void sendToORList(){
+        namesOR.addAll(namesA);
+        namesOR.addAll(namesB);
+        for(int i = 0; i < namesA.size(); i++){
+            for(int j = 0; j < namesB.size(); j++){
+                if(namesA.get(i).equals(namesB.get(j))){
+                    namesOR.remove(namesA.get(i));
+                }
+            }
+        }
+        for(int i = 0; i < namesB.size(); i++){
+            for(int j = 0; j < namesA.size(); j++){
+                if(namesB.get(i).equals(namesA.get(j))){
+                    namesOR.remove(namesB.get(i));
+                }
+            }
+        }
+    }
+
+    public List<String> getNamesAND() {
+        //can be called to use the list
+        for(int i = 0; i < namesAND.size(); i++){
+            System.out.println(namesAND.get(i));
+        }
+        return namesAND;
+    }
+
+    public List<String> getNamesOR() {
+        //can be called to use the list
+        for(int i = 0; i < namesOR.size(); i++){
+            System.out.println(namesOR.get(i));
+        }
+        return namesOR;
     }
 }

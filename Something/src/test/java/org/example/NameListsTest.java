@@ -27,7 +27,13 @@ public class NameListsTest {
         nameLists.returnNamesB();
     }
     @Test
-    public void testSendToList() {
-
+    public void testGetNamesAND() {
+        nameLists.sendToANDList();
+        nameLists.getNamesAND();
+    }
+    @Test
+    public void testGetNamesOR() {
+        nameLists.sendToORList();
+        nameLists.getNamesOR();
     }
 }
