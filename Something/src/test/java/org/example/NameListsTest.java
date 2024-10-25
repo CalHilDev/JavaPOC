@@ -2,6 +2,8 @@ package org.example;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+/*import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;*/
 
 public class NameListsTest {
     NameLists nameLists;
@@ -19,17 +21,19 @@ public class NameListsTest {
         nameLists.setNamesB("Jimmy");
     }
     @Test
-    public void testReturnNamesA(){
-        nameLists.returnNamesA();
+    public void testGetNamesA(){
+        nameLists.getNamesA();
     }
     @Test
-    public void testReturnNamesB(){
-        nameLists.returnNamesB();
+    public void testGetNamesB(){
+        nameLists.getNamesB();
     }
     @Test
-    public void testGetNamesAND() {
-        nameLists.sendToANDList();
+    public void testGetNamesAAndNamesB() {
+        nameLists.getNamesAAndNamesB();
         nameLists.getNamesAND();
+        /*result = nameLists.getNamesAND();
+        assertThat(result, hasSize(1));*/
     }
     @Test
     public void testGetNamesOR() {

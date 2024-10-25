@@ -17,7 +17,7 @@ public class NameLists {
         namesB.add(name);
     }
 
-    public List<String> returnNamesA(){
+    public List<String> getNamesA(){
         //can be called to use the list
         for(int i = 0; i < namesA.size(); i++){
             System.out.println(namesA.get(i));
@@ -25,7 +25,7 @@ public class NameLists {
         return namesA;
     }
 
-    public List<String> returnNamesB(){
+    public List<String> getNamesB(){
         //can be called to use the list
         for(int i = 0; i < namesB.size(); i++){
             System.out.println(namesB.get(i));
@@ -33,14 +33,11 @@ public class NameLists {
         return namesB;
     }
 
-    public void sendToANDList(){
+    public void getNamesAAndNamesB(){
         for(int i = 0; i < namesA.size(); i++){
             for(int j = 0; j < namesB.size(); j++){
                 if(namesA.get(i).equals(namesB.get(j))){
                     namesAND.add(namesA.get(i));
-                }
-                else{
-                    namesOR.add(namesA.get(i));
                 }
             }
         }
