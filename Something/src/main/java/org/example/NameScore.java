@@ -3,42 +3,33 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.ResultSet;
 
 public class NameScore {
-    public static void main(String[] args) {
-        String url = "jdbc:oracle:thin:@localhost:1521:xe";
-        String user = "placeholder";
-        String password = "placeholder";
-        String driverName = "oracle.jdbc.driver.OracleDriver";
-        Connection con;
+    public static void main(String[] args) throws SQLException {
+        String jdbcURL = "jdbc:h2:tcp://localhost/~/test";
+        String username = "sa";
+        String password = "1234";
 
-        /*try(Connection conn = DriverManager.getConnection(url, user, password); Statement stmt = conn.createStatement()){
-            String createTableSQL = "CREATE TABLE IF NOT EXISTS NameScore ("
-                    + "id INT PRIMARY KEY AUTO_INCREMENT, "
-                    + "name VARCHAR(100) NOT NULL, "
-                    + "score VARCHAR(100), "
-                    + ")";
-            stmt.execute(createTableSQL);
+        Connection connection = DriverManager.getConnection(jdbcURL, username, password);
+        System.out.println("Connected to H2 in server mode.");
 
-        }*/
+        String sql = "SELECT * FROM NameScore";
 
-        //Connection conn = DriverManager.getConnection(url, user, password);
-        //throws java.sql.SQLException;
+        Statement statement = connection.createStatement();
 
-        public static Connection getConnection() {
-            try {
-                Class.forName(driverName);
-                try {
-                    con = DriverManager.getConnection(url, user, password);
-                } catch (SQLException ex) {
-                    // log an exception. fro example:
-                    System.out.println("Failed to create the database connection.");
-                }
-            } catch (ClassNotFoundException ex) {
-                // log an exception. for example:
-                System.out.println("Driver not found.");
-            }
-            return con;
+        ResultSet resultSet = statement.executeQuery(sql);
+
+        int count = 0;
+
+        while (resultSet.next()) {
+            count++;
+
+            int score = resultSet.getInt("Score");
+            String name = resultSet.getString("Name");
+            System.out.println("NameScore #" + count + ": " + score + ", " + name);
         }
+
+        connection.close();
     }
 }
